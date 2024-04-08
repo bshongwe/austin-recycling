@@ -9,3 +9,8 @@ body {
   display: flex;
 }
 
+#map {
+  height: 100%;
+  flex-grow: 4;
+  flex-basis: auto;
+}
