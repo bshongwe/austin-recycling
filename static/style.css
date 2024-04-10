@@ -60,3 +60,9 @@ body {
   -moz-box-sizing: border-box;
   outline: none;
 }
+
+#pac-container {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
