@@ -48,3 +48,15 @@ body {
   padding-left: 18px;
   padding-right: 18px;
 }
+
+/* Styling for Autocomplete search bar */
+#pac-card {
+  background-color: #fff;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  font-family: Roboto;
+  margin: 10px 10px 0 0;
+  -moz-box-sizing: border-box;
+  outline: none;
+}
