@@ -50,3 +50,18 @@ const fetchAndRenderStores = async (center) => {
 	// #3.2.2 Create circular markers based on the stores
 	circles = stores.map((store) => storeToCircle(store, map));
 };
+
+// #3.3 Map: store to circle
+const storeToCircle = (store, map) => {
+  const [lng, lat] = store.geometry.coordinates;
+  const circle = new google.maps.Circle({
+    radius: 50,
+    strokeColor: "#579d42",
+    strokeOpacity: 0.8,
+    strokeWeight: 5,
+    center: { lat, lng },
+    map,
+  });
+
+  return circle;
+};
