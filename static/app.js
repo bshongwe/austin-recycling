@@ -114,4 +114,32 @@ const initAutocompleteWidget = () => {
 	});
 
 	// TODO: Respond when a user selects an address
+	// Respond when a user selects an address
+	// Set the origin point when the user selects an address
+	originMarker = new google.maps.Marker({ map: map });
+	originMarker.setVisible(false);
+	let originLocation = map.getCenter();
+	autocomplete.addListener("place_changed", async () => {
+		// circles.forEach((c) => c.setMap(null)); // clear existing stores
+		originMarker.setVisible(false);
+		originLocation = map.getCenter();
+		const place = autocomplete.getPlace();
+
+		if (!place.geometry) {
+			// User entered the name of a Place that was not suggested and
+			// pressed the Enter key, or the Place Details request failed.
+			window.alert("No address available for input: '" + place.name + "'");
+			return;
+		}
+		// Recenter the map to the selected address
+		originLocation = place.geometry.location;
+		map.setCenter(originLocation);
+		map.setZoom(15);
+		originMarker.setPosition(originLocation);
+		originMarker.setVisible(true);
+
+		// await fetchAndRenderStores(originLocation.toJSON());
+		// TODO: Calculate the closest stores
+	});
+
 };
