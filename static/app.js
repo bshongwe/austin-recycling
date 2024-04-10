@@ -14,6 +14,10 @@ const AUSTIN = { lat: 30.262129, lng: -97.7468 };
 // location. Content of info window is entirely up to us.
 infowindow = new google.maps.InfoWindow();
 
+// Step 7:
+// Initialize the Places Autocomplete Widget
+initAutocompleteWidget();
+
 // #2. Funtions
 
 // #2.1 Map: async
