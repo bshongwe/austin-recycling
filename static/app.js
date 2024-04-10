@@ -59,7 +59,8 @@ const fetchAndRenderStores = async (center) => {
 };
 
 // #3.3 Map: store to circle
-const storeToCircle = (store, map) => {
+// Step 6 update - check Git Version
+const storeToCircle = (store, map, infowindow) => {
   const [lng, lat] = store.geometry.coordinates;
   const circle = new google.maps.Circle({
     radius: 50,
@@ -69,6 +70,13 @@ const storeToCircle = (store, map) => {
     center: { lat, lng },
     map,
   });
-
+  circle.addListener("click", () => {
+    infowindow.setContent(`${store.properties.business_name}<br />
+      ${store.properties.address_address}<br />
+      Austin, TX ${store.properties.zip_code}`);
+    infowindow.setPosition({ lat, lng });
+    infowindow.setOptions({ pixelOffset: new google.maps.Size(0, -30) });
+    infowindow.open(map);
+  });
   return circle;
 };
