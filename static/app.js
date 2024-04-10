@@ -9,6 +9,11 @@ let stores = [];
 // #1.2 The location of Austin, TX
 const AUSTIN = { lat: 30.262129, lng: -97.7468 };
 
+// Step 6:
+// Add an info window that pops up when user clicks on an individual
+// location. Content of info window is entirely up to us.
+infowindow = new google.maps.InfoWindow();
+
 // #2. Funtions
 
 // #2.1 Map: async
@@ -48,7 +53,9 @@ const fetchAndRenderStores = async (center) => {
 	stores = (await fetchStores(center)).features;
 
 	// #3.2.2 Create circular markers based on the stores
-	circles = stores.map((store) => storeToCircle(store, map));
+	// circles = stores.map((store) => storeToCircle(store, map));
+	// Step 6 Update
+	circles = stores.map((store) => storeToCircle(store, map, infowindow));
 };
 
 // #3.3 Map: store to circle
